@@ -1,8 +1,7 @@
 name: flutter_plugin_example
 description: A new Flutter plugin.
-version: 0.0.1
-author:
-homepage:
+version: 0.0.5
+homepage: https://github.com/RockyLeee/flutter_plugin_example
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

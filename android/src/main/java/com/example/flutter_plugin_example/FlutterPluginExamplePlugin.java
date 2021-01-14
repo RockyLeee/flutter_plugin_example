@@ -2,12 +2,13 @@ package com.example.flutter_plugin_example;
 
 import androidx.annotation.NonNull;
 
+import java.util.Random;
+
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /** FlutterPluginExamplePlugin */
 public class FlutterPluginExamplePlugin implements FlutterPlugin, MethodCallHandler {
@@ -27,6 +28,11 @@ public class FlutterPluginExamplePlugin implements FlutterPlugin, MethodCallHand
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
     if (call.method.equals("getPlatformVersion")) {
       result.success("Android " + android.os.Build.VERSION.RELEASE);
+    } else if (call.method.equals("call")) {
+      String _param = "number";
+      final int input = call.hasArgument(_param) ? (Integer) call.argument(_param) : 0;
+      final int number = new Random().nextInt(1000);
+      result.success(new int[]{input, number});
     } else {
       result.notImplemented();
     }
